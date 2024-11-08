@@ -66,33 +66,33 @@ const UserInput = () => {
   return (
     <div className="flex flex-col gap-4">
       {showCamera ? (
-        <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
-          <CameraPro
-            ref={camera}
-            aspectRatio={16/9}
-            facingMode="environment"
-          />
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
-            <Button
-              color="danger"
-              variant="solid"
-              size="lg"
-              onClick={() => setShowCamera(false)}
-              startContent={<X size={20} />}
-            >
-              Cancel
-            </Button>
-            <Button
-              color="primary"
-              variant="solid"
-              size="lg"
-              onClick={takePhoto}
-              startContent={<Camera size={20} />}
-            >
-              Capture
-            </Button>
-          </div>
-        </div>
+        <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+  <CameraPro
+    ref={camera}
+    aspectRatio={9/16} // Changed to vertical 9:16 ratio
+    facingMode="environment"
+  />
+  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
+    <Button
+      color="danger"
+      variant="solid"
+      size="lg"
+      onClick={() => setShowCamera(false)}
+      startContent={<X size={20} />}
+    >
+      Cancel
+    </Button>
+    <Button
+      color="primary"
+      variant="solid"
+      size="lg"
+      onClick={takePhoto}
+      startContent={<Camera size={20} />}
+    >
+      Capture
+    </Button>
+  </div>
+</div>
       ) : (
         <>
           <Textarea
