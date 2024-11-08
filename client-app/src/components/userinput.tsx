@@ -98,8 +98,8 @@ const UserInput = () => {
         variant="bordered"
       />
       
-      <div className="flex gap-4">
-        <div className="w-1/4">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+        <div className="w-full sm:w-1/4">
           <Dropdown>
             <DropdownTrigger className="w-full">
               <Button
@@ -138,7 +138,7 @@ const UserInput = () => {
           onClick={handleSubmit}
           isLoading={isLoading}
           endContent={!isLoading && <SendHorizontal size={20} />}
-          className="w-3/4"
+          className="w-full sm:w-3/4"
         >
           Submit
         </Button>
