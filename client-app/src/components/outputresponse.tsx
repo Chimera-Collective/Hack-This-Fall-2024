@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card } from "@nextui-org/card";
 import { CardBody } from "@nextui-org/card";
-import { CardHeader } from "@nextui-org/card";
-import { Divider } from "@nextui-org/divider";
 import { Spinner } from "@nextui-org/spinner";
 interface OutputResponseProps {
   isLoading?: boolean;
