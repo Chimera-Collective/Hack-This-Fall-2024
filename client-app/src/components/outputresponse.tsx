@@ -21,18 +21,11 @@ const OutputResponse: React.FC<OutputResponseProps> = ({
   response = null 
 }) => {
   return (
-    <Card className="w-full max-w-[800px] min-h-[300px] max-h-[600px]">
-      <CardHeader className="flex gap-3 px-6 py-4">
-        <div className="flex flex-col">
-          <p className="text-md font-semibold">Recipe Analysis</p>
-          <p className="text-small text-default-500">AI Generated Response</p>
-        </div>
-      </CardHeader>
-      <Divider/>
-      <CardBody className="overflow-y-auto px-6 py-4">
+    <Card className="min-h-[300px] max-h-[600px]">
+      <CardBody className="overflow-y-auto">
         {isLoading ? (
           <div className="flex items-center justify-center h-full">
-            <Spinner size="lg" label="Processing your recipe..." />
+            <Spinner size="lg" label="Processing your ingredients..." />
           </div>
         ) : response ? (
           response.error ? (
@@ -70,7 +63,7 @@ const OutputResponse: React.FC<OutputResponseProps> = ({
           )
         ) : (
           <div className="flex items-center justify-center h-full text-default-500">
-            Your recipe analysis will appear here
+            Your ingredient analysis will appear here
           </div>
         )}
       </CardBody>
