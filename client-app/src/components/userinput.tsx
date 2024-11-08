@@ -48,7 +48,7 @@ const UserInput = () => {
     if (!file) return;
 
     try {
-      // Optional: Check file type
+      // Check file type?
       if (!file.type.startsWith('image/')) {
         console.error('Please upload an image file');
         return;
@@ -65,12 +65,10 @@ const UserInput = () => {
       const imageUrl = URL.createObjectURL(file);
       console.log('Image preview URL:', imageUrl);
       // TODO:
-      // 1. Send the image to your backend
-      // 2. Process the image for text extraction
-      // 3. Update the textarea with the extracted text
+      // Send the image to your backend
       console.log('Processing image:', file.name);
 
-      // Example of how you might handle the file
+      // Examplee
       const formData = new FormData();
       formData.append('image', file);
 
@@ -101,7 +99,7 @@ const UserInput = () => {
       />
       
       <div className="flex gap-4">
-        <div className="w-1/4"> {/* Added container div for width control */}
+        <div className="w-1/4">
           <Dropdown>
             <DropdownTrigger className="w-full">
               <Button
@@ -146,7 +144,6 @@ const UserInput = () => {
         </Button>
       </div>
 
-      {/* Hidden file input */}
       <input
         type="file"
         ref={fileInputRef}
