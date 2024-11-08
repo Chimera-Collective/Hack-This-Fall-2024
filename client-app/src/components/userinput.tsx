@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { SendHorizontal, Camera, Upload, Plus } from 'lucide-react'; 
+import { SendHorizontal, Camera, Upload, Plus, X } from 'lucide-react'; 
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
+import { Camera as CameraPro } from 'react-camera-pro';
 
 const UserInput = () => {
   const [recipeInput, setRecipeInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showCamera, setShowCamera] = useState<boolean>(false);
+  const camera = useRef<any>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputChange = (value: string) => {
@@ -29,16 +32,12 @@ const UserInput = () => {
   };
 
   const handleAction = (key: string) => {
-    if (!fileInputRef.current) return;
-    
     switch (key) {
       case "upload":
-        fileInputRef.current.removeAttribute('capture');
-        fileInputRef.current.click();
+        fileInputRef.current?.click();
         break;
       case "new":
-        fileInputRef.current.setAttribute('capture', 'environment');
-        fileInputRef.current.click();
+        setShowCamera(true);
         break;
     }
   };
@@ -48,109 +47,120 @@ const UserInput = () => {
     if (!file) return;
 
     try {
-      // Check file type?
-      if (!file.type.startsWith('image/')) {
-        console.error('Please upload an image file');
-        return;
-      }
-
-      // Check file size
-      const maxSize = 5 * 1024 * 1024; // 5MB
-      if (file.size > maxSize) {
-        console.error('File is too large. Please upload an image smaller than 5MB');
-        return;
-      }
-
-      // Create a preview URL if needed, is this necessary?
-      const imageUrl = URL.createObjectURL(file);
-      console.log('Image preview URL:', imageUrl);
-      // TODO:
-      // Send the image to your backend
-      console.log('Processing image:', file.name);
-
-      // Examplee
-      const formData = new FormData();
-      formData.append('image', file);
-
-      // sample API call
-
-
+      // Handle file upload logic here
+      console.log('File uploaded:', file);
     } catch (error) {
-      console.error('Error processing image:', error);
-    } finally {
-      // Reset the file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
+      console.error('Error uploading file:', error);
+    }
+  };
+
+  const takePhoto = () => {
+    if (camera.current) {
+      const photo = camera.current.takePhoto();
+      console.log('Photo taken:', photo);
+      // Here you would handle the photo data
+      setShowCamera(false);
     }
   };
 
   return (
     <div className="flex flex-col gap-4">
-      <Textarea
-        placeholder="12 ounces of spaghetti, 4 large egg yolks, 1 cup of freshly grated Parmesan cheese..."
-        description="Please enter a recipe link or provide a list of ingredients to be processed for any dietary restrictions."
-        value={recipeInput}
-        onValueChange={handleInputChange}
-        minRows={4}
-        maxRows={20}
-        size="lg"
-        variant="bordered"
-      />
-      
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-        <div className="w-full sm:w-1/4">
-          <Dropdown>
-            <DropdownTrigger className="w-full">
-              <Button
-                color="secondary"
-                variant="shadow"
-                size="lg"
-                className="w-full"
-                startContent={<Plus size={20} />}
-              >
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu 
-              aria-label="Camera Actions" 
-              onAction={(key) => handleAction(key as string)}
+      {showCamera ? (
+        <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+          <CameraPro
+            ref={camera}
+            aspectRatio={16/9}
+            facingMode="environment"
+          />
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
+            <Button
+              color="danger"
+              variant="solid"
+              size="lg"
+              onClick={() => setShowCamera(false)}
+              startContent={<X size={20} />}
             >
-              <DropdownItem
-                key="upload"
-                startContent={<Upload size={20} />}
-              >
-                Upload
-              </DropdownItem>
-              <DropdownItem
-                key="new"
-                startContent={<Camera size={20} />}
-              >
-                New
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+              Cancel
+            </Button>
+            <Button
+              color="primary"
+              variant="solid"
+              size="lg"
+              onClick={takePhoto}
+              startContent={<Camera size={20} />}
+            >
+              Capture
+            </Button>
+          </div>
         </div>
+      ) : (
+        <>
+          <Textarea
+            placeholder="12 ounces of spaghetti, 4 large egg yolks, 1 cup of freshly grated Parmesan cheese..."
+            description="Please enter a recipe link or provide a list of ingredients to be processed for any dietary restrictions."
+            value={recipeInput}
+            onValueChange={handleInputChange}
+            minRows={4}
+            maxRows={20}
+            size="lg"
+            variant="bordered"
+          />
+          
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <div className="w-full sm:w-1/4">
+              <Dropdown>
+                <DropdownTrigger className="w-full">
+                  <Button
+                    color="secondary"
+                    variant="shadow"
+                    size="lg"
+                    className="w-full"
+                    startContent={<Plus size={20} />}
+                  >
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu 
+                  aria-label="Camera Actions" 
+                  onAction={(key) => handleAction(key as string)}
+                >
+                  <DropdownItem
+                    key="upload"
+                    startContent={<Upload size={20} />}
+                  >
+                    Upload
+                  </DropdownItem>
+                  <DropdownItem
+                    key="new"
+                    startContent={<Camera size={20} />}
+                  >
+                    New
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
 
-        <Button
-          color="primary"
-          variant="shadow"
-          size="lg"
-          onClick={handleSubmit}
-          isLoading={isLoading}
-          endContent={!isLoading && <SendHorizontal size={20} />}
-          className="w-full sm:w-3/4"
-        >
-          Submit
-        </Button>
-      </div>
+            <Button
+              color="primary"
+              variant="shadow"
+              size="lg"
+              onClick={handleSubmit}
+              isLoading={isLoading}
+              endContent={!isLoading && <SendHorizontal size={20} />}
+              className="w-full sm:w-3/4"
+            >
+              Submit
+            </Button>
+          </div>
 
-      <input
-        type="file"
-        ref={fileInputRef}
-        className="hidden"
-        accept="image/*"
-        onChange={handleFileUpload}
-      />
+          <input
+            type="file"
+            ref={fileInputRef}
+            className="hidden"
+            accept="image/*"
+            onChange={handleFileUpload}
+          />
+        </>
+      )}
     </div>
   );
 };
