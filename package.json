@@ -1,0 +1,15 @@
+{
+    "name": "hack-this-fall-2024",
+    "version": "1.0.0",
+    "description": "Project Description",
+    "main": "index.js",
+    "type":"commonjs",
+    "scripts": {
+      "start": "node mongoDBcall.js"
+    },
+    "dependencies": {
+      "mongodb": "^4.5.0",
+      "dotenv": "^10.0.0"
+    }
+  }
+  
