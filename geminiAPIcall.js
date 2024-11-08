@@ -14,7 +14,7 @@ async function textGenTextOnlyPrompt() {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     console.log("Model Loaded:", model);
 
-    const prompt = "Write a story about a magic backpack.";
+    const prompt = "Can you take this HTML text and return a JSON of all food ingredients. Can you ensure food names are singular and lowercase.";
     console.log("Prompt:", prompt);
 
     const result = await model.generateContent(prompt);
