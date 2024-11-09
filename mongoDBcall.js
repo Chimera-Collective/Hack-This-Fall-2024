@@ -1,5 +1,6 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-require('dotenv').config();
+import { MongoClient, ServerApiVersion } from 'mongodb';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const monggoKey = process.env.Mongo_connection;
 console.log(monggoKey);
@@ -42,18 +43,14 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+export async function databaseQuery(ingredient) {
   // Connect the client to the server (optional starting in v4.7)
   await client.connect();
-  // Send a ping to confirm a successful connection
-  await client.db("admin").command({ ping: 1 });
-  console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
-  const db = client.db('HTF-2024');
-  const result = await findAllIngredients(db, ["peanut", "milk", "wheat", "birds of prey"]);
-  for (i in result){
+  const db = await client.db('HTF-2024');
+  const result = await findAllIngredients(db, ingredient);
+  for (var i in result){
     if (result[i].length > 0){
-      console.log(result[i]).toJSON()
+      console.log(result[i])
     }
   }
 
@@ -62,4 +59,6 @@ async function run() {
 }
 
 
-run().catch(console.dir);
+databaseQuery().catch(console.dir);
+
+
