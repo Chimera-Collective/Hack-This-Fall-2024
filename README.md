@@ -34,6 +34,23 @@ AllergyIQ bridges the gap between health requirements and cultural dietary pract
 * [![MongoDB][MongoDB.js]][MongoDB-url]
 * [![Google Cloud][GoogleCloud.js]][GoogleCloud-url]
 
+### Problem It Solves
+AllergyIQ helps users navigate complex dietary needs by simultaneously checking ingredients against both health restrictions and cultural requirements. For example, someone managing diabetes while following Halal guidelines can ensure their meals meet both criteria with a single scan.
+
+#### Health and Cultural Integration
+The app helps users navigate complex dietary needs by simultaneously checking ingredients against both health restrictions and cultural requirements. For example, someone managing diabetes while following Halal guidelines can ensure their meals meet both criteria with a single scan.
+
+#### Comprehensive Analysis
+The tool evaluates food choices across multiple dimensions:
+- **Medical Requirements**: Helps prevent adverse reactions and manage health conditions
+- **Cultural Preferences**: Ensures compliance with religious and cultural dietary laws
+- **Nutritional Balance**: Maintains dietary quality while respecting restrictions
+
+#### Practical Benefits
+The app supports better health outcomes by making it easier to follow prescribed dietary guidelines while maintaining cultural traditions. This is particularly valuable since cultural beliefs significantly influence food choices and can impact disease risk management. Users can explore healthy alternatives within their cultural framework, leading to better adherence to both health and cultural requirements.
+
+
+
 ## Getting Started
 
 ### Prerequisites
