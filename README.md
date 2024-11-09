@@ -1,4 +1,6 @@
-Based on the provided information, I'll help transform the README template for AllergyIQ. Here's the updated version:
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
 # AllergyIQ
 
