@@ -66,10 +66,10 @@ const UserInput = () => {
   return (
     <div className="flex flex-col gap-4">
       {showCamera ? (
-        <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+        <div className="relative w-[full] h-[300px] rounded-lg overflow-hidden">
     <CameraPro
         ref={camera}
-        aspectRatio={9/16}
+        aspectRatio={1/1}
         facingMode="environment"
     />
     <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
@@ -97,7 +97,7 @@ const UserInput = () => {
         <>
           <Textarea
             placeholder="12 ounces of spaghetti, 4 large egg yolks, 1 cup of freshly grated Parmesan cheese..."
-            description="Enter link or ingredients to be checked here."
+            description="Enter link or ingredients to be analyzed here."
             value={recipeInput}
             onValueChange={handleInputChange}
             minRows={4}
@@ -106,8 +106,8 @@ const UserInput = () => {
             variant="bordered"
           />
           
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-            <div className="w-full sm:w-1/4">
+          <div className="flex gap-2 sm:gap-4">
+            <div className="sm:w-1/4">
               <Dropdown>
                 <DropdownTrigger className="w-full">
                   <Button

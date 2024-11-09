@@ -61,7 +61,7 @@ const OutputResponse: React.FC<OutputResponseProps> = ({
           )
         ) : (
           <div className="flex items-center justify-center h-full text-default-500">
-            Your ingredient analysis will appear here
+            Your ingredient analysis will generate here
           </div>
         )}
       </CardBody>
