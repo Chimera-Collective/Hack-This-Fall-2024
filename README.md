@@ -11,7 +11,7 @@
   </p>
 
   <p align="center">
-    Hack This Fall 2024 Submission
+    -Hack This Fall 2024 Submission-
   </p>
 
 </div>
