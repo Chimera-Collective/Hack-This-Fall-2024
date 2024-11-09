@@ -5,10 +5,15 @@
   </a>
 
 <h3 align="center">AllergyIQ</h3>
+  <br>
+    <p align="center">
+    Hack This Fall 2024 Submission
+  </p>
 
   <p align="center">
     Your AI-driven dietary detection companion that scans ingredients through text, URLs, or photos to instantly identify potential allergens and dietary restrictions, ensuring safer food choices.
   </p>
+
 </div>
 
 ## About The Project
@@ -112,6 +117,3 @@ Project Link: [https://github.com/your_username/AllergyIQ](https://github.com/yo
 [MongoDB-url]: https://www.mongodb.com/
 [GoogleCloud.js]: https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white
 [GoogleCloud-url]: https://cloud.google.com/
-
-Citations:
-  https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/31112838/69acb6ad-b20a-46db-a7c6-d21bfeba71c3/paste.txt
