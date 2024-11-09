@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { SendHorizontal, Camera, Upload, Plus, X } from 'lucide-react'; 
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
+import { SendHorizontal, Upload, X, Camera } from 'lucide-react'; 
 import { Camera as CameraPro } from 'react-camera-pro';
 
 const UserInput = () => {
@@ -31,15 +30,8 @@ const UserInput = () => {
     }
   };
 
-  const handleAction = (key: string) => {
-    switch (key) {
-      case "upload":
-        fileInputRef.current?.click();
-        break;
-      case "new":
-        setShowCamera(true);
-        break;
-    }
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +39,6 @@ const UserInput = () => {
     if (!file) return;
 
     try {
-      // Handle file upload logic here
       console.log('File uploaded:', file);
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -58,7 +49,6 @@ const UserInput = () => {
     if (camera.current) {
       const photo = camera.current.takePhoto();
       console.log('Photo taken:', photo);
-      // handle the photo data here
       setShowCamera(false);
     }
   };
@@ -67,32 +57,32 @@ const UserInput = () => {
     <div className="flex flex-col gap-4">
       {showCamera ? (
         <div className="relative w-[full] h-[300px] rounded-lg overflow-hidden">
-    <CameraPro
-        ref={camera}
-        aspectRatio={1/1}
-        facingMode="environment"
-    />
-    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
-        <Button
-        color="danger"
-        variant="solid"
-        size="lg"
-        onClick={() => setShowCamera(false)}
-        startContent={<X size={20} />}
-        >
-        Cancel
-        </Button>
-        <Button
-        color="primary"
-        variant="solid"
-        size="lg"
-        onClick={takePhoto}
-        startContent={<Camera size={20} />}
-        >
-        Capture
-        </Button>
-    </div>
-    </div>
+          <CameraPro
+            ref={camera}
+            aspectRatio={1/1}
+            facingMode="environment"
+          />
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
+            <Button
+              color="danger"
+              variant="solid"
+              size="lg"
+              onClick={() => setShowCamera(false)}
+              startContent={<X size={20} />}
+            >
+              Cancel
+            </Button>
+            <Button
+              color="primary"
+              variant="solid"
+              size="lg"
+              onClick={takePhoto}
+              startContent={<Camera size={20} />}
+            >
+              Capture
+            </Button>
+          </div>
+        </div>
       ) : (
         <>
           <Textarea
@@ -107,37 +97,15 @@ const UserInput = () => {
           />
           
           <div className="flex gap-2 sm:gap-4">
-            <div className="sm:w-1/4">
-              <Dropdown>
-                <DropdownTrigger className="w-full">
-                  <Button
-                    color="secondary"
-                    variant="shadow"
-                    size="lg"
-                    className="w-full"
-                    startContent={<Plus size={20} />}
-                  >
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu 
-                  aria-label="Camera Actions" 
-                  onAction={(key) => handleAction(key as string)}
-                >
-                  <DropdownItem
-                    key="upload"
-                    startContent={<Upload size={20} />}
-                  >
-                    Upload
-                  </DropdownItem>
-                  <DropdownItem
-                    key="new"
-                    startContent={<Camera size={20} />}
-                  >
-                    New
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </div>
+            <Button
+              color="secondary"
+              variant="shadow"
+              size="lg"
+              onClick={handleUploadClick}
+              startContent={<Upload size={20} />}
+              className="w-1/4"
+            >
+            </Button>
 
             <Button
               color="primary"
@@ -146,7 +114,7 @@ const UserInput = () => {
               onClick={handleSubmit}
               isLoading={isLoading}
               endContent={!isLoading && <SendHorizontal size={20} />}
-              className="w-full sm:w-3/4"
+              className="w-3/4"
             >
               Submit
             </Button>
