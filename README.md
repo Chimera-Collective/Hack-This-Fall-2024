@@ -13,7 +13,13 @@
 
 ## About The Project
 
-AllergyIQ bridges the gap between health requirements and cultural dietary practices, making it easier to maintain both without compromise. The application leverages advanced AI technology to provide comprehensive ingredient analysis and allergen detection through multiple input methods .
+AllergyIQ bridges the gap between health requirements and cultural dietary practices, making it easier to maintain both without compromise. The application leverages advanced AI technology to provide comprehensive ingredient analysis and allergen detection through multiple input methods.
+
+### Development Team
+- Andy Huynh | [Github](https://github.com/AH-Huynh942) | [Linkedin](https://www.linkedin.com/in/andy-huynh-5a572791/)
+- Bernard Martis | [Github](https://github.com/bernardm) | [Linkedin](https://www.linkedin.com/in/bernard-martis/)
+- Dakota Heizman | [Github](https://github.com/DakotaH5000) | [Linkedin](https://www.linkedin.com/in/Dakota-Heizman/)
+- Silver Alcid | [Github](https://github.com/silveralcid) | [Linkedin](https://www.linkedin.com/in/silveralcid/)
 
 ### Built With
 
@@ -81,12 +87,6 @@ The application combines:
 - Google Gemini API for ingredient analysis 
 
 ## Contributing
-
-### Development Team
-- Andy Huynh
-- Bernard Martis
-- Dakota Heizman
-- Silver Alcid 
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
