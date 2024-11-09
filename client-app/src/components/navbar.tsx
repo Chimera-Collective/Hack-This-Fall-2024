@@ -24,6 +24,7 @@ import {
   SearchIcon,
 } from "@/components/icons";
 
+import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
   const searchInput = (
@@ -56,6 +57,7 @@ export const Navbar = () => {
             color="foreground"
             href="/"
           >
+            
             {/* <p className="font-bold text-inherit">AllergyIQ</p> */}
           </Link>
         </NavbarBrand>
