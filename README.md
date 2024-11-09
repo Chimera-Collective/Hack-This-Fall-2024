@@ -5,7 +5,6 @@
   </a>
 
 <h3 align="center">AllergyIQ</h3>
-  <br>
     <p align="center">
     Hack This Fall 2024 Submission
   </p>
