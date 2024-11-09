@@ -9,12 +9,12 @@ export default function DefaultLayout({
   return (
     <div className="relative flex flex-col h-screen">
       <Navbar />
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
+      <main className="container mx-auto max-w-7xl px-2 sm:px-6 flex-grow sm:pt-16">
         {children}
       </main>
       <footer className="w-full flex items-center justify-center py-3">
         <p className="text-sm text-default-400">
-          AllergyIQ
+          AllergyIQ 2024
         </p>
       </footer>
     </div>
