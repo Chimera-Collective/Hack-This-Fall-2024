@@ -11,10 +11,6 @@
   </p>
 </div>
 
-# AllergyIQ
-
-Your AI-driven dietary detection companion that scans ingredients through text, URLs, or photos to instantly identify potential allergens and dietary restrictions, ensuring safer food choices .
-
 ## About The Project
 
 AllergyIQ bridges the gap between health requirements and cultural dietary practices, making it easier to maintain both without compromise. The application leverages advanced AI technology to provide comprehensive ingredient analysis and allergen detection through multiple input methods .
