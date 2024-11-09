@@ -58,7 +58,7 @@ const UserInput = () => {
     if (camera.current) {
       const photo = camera.current.takePhoto();
       console.log('Photo taken:', photo);
-      // Here you would handle the photo data
+      // handle the photo data here
       setShowCamera(false);
     }
   };
@@ -97,7 +97,7 @@ const UserInput = () => {
         <>
           <Textarea
             placeholder="12 ounces of spaghetti, 4 large egg yolks, 1 cup of freshly grated Parmesan cheese..."
-            description="Please enter a recipe link or provide a list of ingredients to be processed for any dietary restrictions."
+            description="Enter link or ingredients to be checked here."
             value={recipeInput}
             onValueChange={handleInputChange}
             minRows={4}
