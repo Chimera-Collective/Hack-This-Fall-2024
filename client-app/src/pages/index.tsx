@@ -1,5 +1,3 @@
-import { siteConfig } from "@/config/site";
-import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import MainApp from "@/components/mainapp";
 import { Logo } from "@/components/icons";
