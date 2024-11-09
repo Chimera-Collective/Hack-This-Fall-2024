@@ -4,8 +4,6 @@
     <img src="images/logo.png" alt="Logo" width="500" height="93">
   </a>
 
-<h3 align="center">AllergyIQ</h3>
-
   <p align="center">
     Your AI-driven dietary detection companion that scans ingredients through text, URLs, or photos to instantly identify potential allergens and dietary restrictions, ensuring safer food choices.
   </p>
