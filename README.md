@@ -34,7 +34,7 @@ AllergyIQ bridges the gap between health requirements and cultural dietary pract
 * [![MongoDB][MongoDB.js]][MongoDB-url]
 * [![Google Cloud][GoogleCloud.js]][GoogleCloud-url]
 
-### Problem It Solves
+### The Problem We Aim to Solve
 AllergyIQ helps users navigate complex dietary needs by simultaneously checking ingredients against both health restrictions and cultural requirements. For example, someone managing diabetes while following Halal guidelines can ensure their meals meet both criteria with a single scan.
 
 #### Health and Cultural Integration
