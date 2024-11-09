@@ -3,6 +3,7 @@ import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { SendHorizontal, Upload, X, Camera } from 'lucide-react'; 
 import { Camera as CameraPro } from 'react-camera-pro';
+import { Ocr } from './ocr'
 
 const UserInput = () => {
   const [recipeInput, setRecipeInput] = useState<string>("");
@@ -37,6 +38,8 @@ const UserInput = () => {
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+
+    Ocr(file)
 
     try {
       console.log('File uploaded:', file);
