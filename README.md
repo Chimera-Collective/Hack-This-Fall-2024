@@ -3,6 +3,7 @@
   <a href="https://github.com/github_username/repo_name">
     <img src="images/logo.png" alt="Logo" width="500" height="93">
   </a>
+  <br>
 
   <p align="center">
     Your AI-driven dietary detection companion that scans ingredients through text, URLs, or photos to instantly identify potential allergens and dietary restrictions, ensuring safer food choices.
