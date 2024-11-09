@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Allergy IQ - OpenAPI 3.0
+  version: 0.0.1
+
+tags:
+  - name: ingredient
+    description: Everything about food ingredients
+
+  - name: process
+    description: Get allergen response from input data
+    externalDocs:
+      description: Our allergen list
+      url: https://github.com/Chimera-Collective/AllergyIQ/blob/main/docs/allergen.md
+
+paths:
+  /process/image:
+    post:
+      tags:
+        - process
+      summary: Submit an image of ingredients
+      description: ''
+      operationId: uploadFile
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemAllergens'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+
+  /process/text:
+    post:
+      tags:
+        - process
+      summary: Submit unstructured text of ingredients
+      operationId: inputText
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputText'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InputText'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InputText'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemAllergens'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+
+  /process/url:
+    post:
+      tags:
+        - process
+      summary: Submit the URL of a webpage containing ingrediemts
+      operationId: inputUrl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputUrl'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InputUrl'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InputUrl'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemAllergens'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+
+components:
+  schemas:
+    Allergen:
+      type: string
+      example: 'peanut'
+      xml:
+        name: allergen
+
+    AllergenCategory:
+      required:
+        - name
+        - allergens
+      type: object
+      properties:
+        name:
+          type: string
+          example: legume
+        allergens:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Allergen'
+
+    ItemAllergens:
+      type: array
+      items:
+        $ref: '#/components/schemas/AllergenCategory'
+
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+
+    InputText:
+      type: object
+      description: Unstructured text containing a list of ingredients
+      properties:
+        text:
+          type: string
+          example: 'Ingredients: Water, Fish Stock, Fish (Cod, Haddock, etc.), Potatoes, Carrots, Onions, Celery, Clams, Mussels, Shrimp, Crab, Spices (Salt, Pepper, Bay Leaf, etc.), Thickening Agent (Cornstarch or Flour). Contains: Fish (including Shellfish), Peanuts'
+      xml:
+        name: text
+
+    InputUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          example: 'https://www.allrecipes.com/tuscan-salmon-recipe-8673342'
+      xml:
+        name: url
+
+  requestBodies:
+    InputText:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InputText'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/InputText'
